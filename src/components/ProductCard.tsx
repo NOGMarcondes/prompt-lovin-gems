@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import { ShoppingCart, Eye, Package, Ruler, Gem, Shield } from "lucide-react";
+import { ShoppingCart, Eye, Package, Ruler, Gem, Shield, Plus, Minus } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardFooter } from "./ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Separator } from "./ui/separator";
-import { useState } from "react";
+import { useState, memo } from "react";
 
 export interface Product {
   id: string;
@@ -25,11 +25,12 @@ export interface Product {
 
 interface ProductCardProps {
   product: Product;
-  onAddToCart?: (product: Product) => void;
+  onAddToCart?: (product: Product, quantity: number) => void;
 }
 
-const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
+const ProductCard = memo(({ product, onAddToCart }: ProductCardProps) => {
   const [open, setOpen] = useState(false);
+  const [quantity, setQuantity] = useState(1);
 
   return (
     <Card className="group overflow-hidden hover-lift">
@@ -132,17 +133,43 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
                   </p>
                 </div>
 
-                <Button 
-                  className="w-full" 
-                  size="lg"
-                  onClick={() => {
-                    onAddToCart?.(product);
-                    setOpen(false);
-                  }}
-                >
-                  <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
-                  Adicionar ao Carrinho
-                </Button>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-sm font-medium">Quantidade:</span>
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8"
+                        onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                      >
+                        <Minus className="h-4 w-4" />
+                      </Button>
+                      <span className="w-12 text-center font-semibold">{quantity}</span>
+                      <Button
+                        variant="outline"
+                        size="icon"
+                        className="h-8 w-8"
+                        onClick={() => setQuantity(quantity + 1)}
+                      >
+                        <Plus className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                  
+                  <Button 
+                    className="w-full" 
+                    size="lg"
+                    onClick={() => {
+                      onAddToCart?.(product, quantity);
+                      setOpen(false);
+                      setQuantity(1);
+                    }}
+                  >
+                    <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
+                    Adicionar ao Carrinho
+                  </Button>
+                </div>
               </div>
             </div>
           </DialogContent>
@@ -167,7 +194,7 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
       <CardFooter className="p-3 sm:p-4 pt-0">
         <Button
           className="w-full h-9 sm:h-10 text-xs sm:text-sm"
-          onClick={() => onAddToCart?.(product)}
+          onClick={() => onAddToCart?.(product, 1)}
         >
           <ShoppingCart className="mr-2 h-3 w-3 sm:h-4 sm:w-4" />
           Adicionar ao Carrinho
@@ -175,6 +202,8 @@ const ProductCard = ({ product, onAddToCart }: ProductCardProps) => {
       </CardFooter>
     </Card>
   );
-};
+});
+
+ProductCard.displayName = "ProductCard";
 
 export default ProductCard;

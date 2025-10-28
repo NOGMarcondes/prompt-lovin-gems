@@ -1,8 +1,8 @@
-import { X, ShoppingBag, Trash2 } from "lucide-react";
+import { ShoppingBag, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetHeader, SheetTitle } from "./ui/sheet";
-import { Separator } from "./ui/separator";
 import type { Product } from "./ProductCard";
+import { memo, useMemo } from "react";
 
 export interface CartItem extends Product {
   quantity: number;
@@ -16,8 +16,11 @@ interface CartSidebarProps {
   onCheckout?: () => void;
 }
 
-const CartSidebar = ({ open, onClose, items, onRemoveItem, onCheckout }: CartSidebarProps) => {
-  const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+const CartSidebar = memo(({ open, onClose, items, onRemoveItem, onCheckout }: CartSidebarProps) => {
+  const total = useMemo(() => 
+    items.reduce((sum, item) => sum + item.price * item.quantity, 0),
+    [items]
+  );
 
   const handleCheckout = () => {
     if (onCheckout) {
@@ -96,6 +99,8 @@ const CartSidebar = ({ open, onClose, items, onRemoveItem, onCheckout }: CartSid
       </SheetContent>
     </Sheet>
   );
-};
+});
+
+CartSidebar.displayName = "CartSidebar";
 
 export default CartSidebar;

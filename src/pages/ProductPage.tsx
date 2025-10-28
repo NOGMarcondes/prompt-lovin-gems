@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ShoppingCart, Heart, Package, Ruler, Gem, Shield, Truck } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Heart, Package, Ruler, Gem, Shield, Truck, Plus, Minus } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -16,22 +16,23 @@ const ProductPage = () => {
   const { id } = useParams();
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [quantity, setQuantity] = useState(1);
 
   const product = products.find(p => p.id === id) || products[0];
   const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
 
-  const handleAddToCart = (prod: Product) => {
+  const handleAddToCart = useCallback((prod: Product, qty: number = 1) => {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.id === prod.id);
       if (existing) {
         return prev.map((item) =>
-          item.id === prod.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === prod.id ? { ...item, quantity: item.quantity + qty } : item
         );
       }
-      return [...prev, { ...prod, quantity: 1 }];
+      return [...prev, { ...prod, quantity: qty }];
     });
-    toast.success("Produto adicionado ao carrinho!");
-  };
+    toast.success(`${qty} ${qty > 1 ? 'produtos adicionados' : 'produto adicionado'} ao carrinho!`);
+  }, []);
 
   const handleRemoveFromCart = (productId: string) => {
     setCartItems((prev) => prev.filter((item) => item.id !== productId));
@@ -84,10 +85,36 @@ const ProductPage = () => {
             </div>
 
             <div className="space-y-3 sm:space-y-4">
+              <div className="flex items-center justify-between gap-4 p-4 bg-secondary/20 rounded-lg">
+                <span className="font-medium">Quantidade:</span>
+                <div className="flex items-center gap-3">
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-10 w-10"
+                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  >
+                    <Minus className="h-4 w-4" />
+                  </Button>
+                  <span className="w-12 text-center font-bold text-lg">{quantity}</span>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="h-10 w-10"
+                    onClick={() => setQuantity(quantity + 1)}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
+              </div>
+              
               <Button
                 size="lg"
                 className="w-full h-11 sm:h-12"
-                onClick={() => handleAddToCart(product)}
+                onClick={() => {
+                  handleAddToCart(product, quantity);
+                  setQuantity(1);
+                }}
               >
                 <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Adicionar ao Carrinho

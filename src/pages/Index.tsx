@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { Sparkles, Crown, Gem, Heart, ChevronLeft, ChevronRight } from "lucide-react";
 import Navigation from "@/components/Navigation";
@@ -53,18 +53,18 @@ const Index = () => {
     { name: "Brincos", icon: Heart, image: earrings1 },
   ];
 
-  const handleAddToCart = (product: Product) => {
+  const handleAddToCart = useCallback((product: Product, quantity: number = 1) => {
     setCartItems((prev) => {
       const existing = prev.find((item) => item.id === product.id);
       if (existing) {
         return prev.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id ? { ...item, quantity: item.quantity + quantity } : item
         );
       }
-      return [...prev, { ...product, quantity: 1 }];
+      return [...prev, { ...product, quantity }];
     });
-    toast.success("Produto adicionado ao carrinho!");
-  };
+    toast.success(`${quantity} ${quantity > 1 ? 'produtos adicionados' : 'produto adicionado'} ao carrinho!`);
+  }, []);
 
   const handleRemoveFromCart = (id: string) => {
     setCartItems((prev) => prev.filter((item) => item.id !== id));
