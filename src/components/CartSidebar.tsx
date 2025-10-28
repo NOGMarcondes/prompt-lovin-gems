@@ -35,7 +35,7 @@ const CartSidebar = ({ open, onClose, items, onRemoveItem, onCheckout }: CartSid
           </SheetTitle>
         </SheetHeader>
 
-        <div className="flex flex-col h-full mt-6">
+        <div className="flex flex-col h-[calc(100vh-8rem)] mt-6">
           {items.length === 0 ? (
             <div className="flex-1 flex items-center justify-center">
               <div className="text-center">
@@ -45,7 +45,7 @@ const CartSidebar = ({ open, onClose, items, onRemoveItem, onCheckout }: CartSid
             </div>
           ) : (
             <>
-              <div className="flex-1 overflow-y-auto space-y-4">
+              <div className="flex-1 overflow-y-auto space-y-4 pr-2 -mr-2">
                 {items.map((item) => (
                   <div key={item.id} className="flex gap-4 p-4 bg-secondary/30 rounded-lg">
                     <img
@@ -74,7 +74,7 @@ const CartSidebar = ({ open, onClose, items, onRemoveItem, onCheckout }: CartSid
                 ))}
               </div>
 
-              <div className="border-t pt-4 mt-4 space-y-4">
+              <div className="border-t pt-4 mt-4 space-y-4 flex-shrink-0 pb-2">
                 <div className="flex justify-between items-center">
                   <span className="text-lg font-semibold">Total:</span>
                   <div className="text-right">
