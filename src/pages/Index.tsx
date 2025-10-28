@@ -96,8 +96,8 @@ const Index = () => {
         cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
       />
 
-      {/* Hero Section */}
-      <section className="relative h-[600px] flex items-center justify-center overflow-hidden">
+      {/* Hero Section - Compacto */}
+      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
@@ -107,15 +107,12 @@ const Index = () => {
           <div className="absolute inset-0 gradient-hero opacity-60" />
         </div>
         <div className="relative z-10 text-center text-white px-4 animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-serif font-bold mb-6">
+          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">
             Elegância que Brilha
           </h1>
-          <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl mb-6 max-w-2xl mx-auto">
             Descubra joias exclusivas que contam sua história
           </p>
-          <Button size="lg" className="text-lg px-8" asChild>
-            <Link to="/produtos">Ver Coleção</Link>
-          </Button>
         </div>
       </section>
 
@@ -130,10 +127,11 @@ const Index = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {categories.map((category, index) => {
             const Icon = category.icon;
+            const categoryPath = `/categoria/${category.name.toLowerCase()}`;
             return (
               <Link
                 key={category.name}
-                to="/produtos"
+                to={categoryPath}
                 className="group relative overflow-hidden rounded-lg aspect-square hover-lift animate-scale-in"
                 style={{ animationDelay: `${index * 100}ms` }}
               >
