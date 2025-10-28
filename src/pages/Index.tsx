@@ -187,32 +187,52 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-12 sm:py-16 lg:py-20">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="space-y-4 sm:space-y-6">
-              <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold">
-                Sobre a Joias Elegance
-              </h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Há mais de uma década criando joias que celebram momentos especiais. Cada peça é 
-                cuidadosamente selecionada e confeccionada com materiais nobres, garantindo qualidade 
-                e exclusividade.
-              </p>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-                Nossa missão é transformar sonhos em realidade através de joias únicas que contam 
-                histórias e criam memórias eternas.
-              </p>
-              <Button size="lg" className="h-10 sm:h-11" asChild>
-                <Link to="/sobre">Conheça Nossa História</Link>
-              </Button>
-            </div>
-            <div className="relative aspect-square rounded-lg overflow-hidden">
-              <img
-                src={heroImage}
-                alt="Joias Elegance"
-                className="w-full h-full object-cover"
-              />
+      <section className="relative py-16 sm:py-20 lg:py-24 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-secondary/30" />
+        <div className="container mx-auto px-4 relative">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
+              <div className="order-2 md:order-1 space-y-6">
+                <div className="inline-block">
+                  <span className="text-xs font-semibold tracking-wider uppercase text-primary">Nossa História</span>
+                </div>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold leading-tight">
+                  Elegância que <span className="text-gradient">Transcende</span> o Tempo
+                </h2>
+                <div className="space-y-4">
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                    Há mais de uma década, dedicamo-nos à arte de criar joias que celebram os momentos 
+                    mais especiais da vida. Cada peça é cuidadosamente elaborada com materiais nobres, 
+                    unindo tradição e inovação.
+                  </p>
+                  <p className="text-base sm:text-lg text-muted-foreground leading-relaxed">
+                    Nossa paixão é transformar sonhos em realidade através de joias únicas que contam 
+                    histórias e eternizam memórias preciosas.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-4 pt-2">
+                  <Button size="lg" asChild>
+                    <Link to="/sobre">Conheça Nossa História</Link>
+                  </Button>
+                  <Button size="lg" variant="outline" asChild>
+                    <Link to="/produtos">Ver Coleção</Link>
+                  </Button>
+                </div>
+              </div>
+              <div className="order-1 md:order-2 relative">
+                <div className="relative rounded-2xl overflow-hidden shadow-elegant hover-lift">
+                  <div className="aspect-[4/5] relative">
+                    <img
+                      src={heroImage}
+                      alt="Joias Elegance"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
+                  </div>
+                </div>
+                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-primary/10 rounded-full blur-3xl -z-10" />
+                <div className="absolute -top-6 -right-6 w-40 h-40 bg-secondary/30 rounded-full blur-3xl -z-10" />
+              </div>
             </div>
           </div>
         </div>
