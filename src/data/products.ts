@@ -1,11 +1,15 @@
 import ring1 from "@/assets/ring-1.jpg";
 import ring2 from "@/assets/ring-2.jpg";
+import ring3 from "@/assets/ring-3.jpg";
 import necklace1 from "@/assets/necklace-1.jpg";
 import necklace2 from "@/assets/necklace-2.jpg";
+import necklace3 from "@/assets/necklace-3.jpg";
 import bracelet1 from "@/assets/bracelet-1.jpg";
 import bracelet2 from "@/assets/bracelet-2.jpg";
+import bracelet3 from "@/assets/bracelet-3.jpg";
 import earrings1 from "@/assets/earrings-1.jpg";
 import earrings2 from "@/assets/earrings-2.jpg";
+import earrings3 from "@/assets/earrings-3.jpg";
 
 export interface Product {
   id: string;
@@ -149,6 +153,70 @@ export const products: Product[] = [
       dimensions: "Comprimento total 25mm",
       finish: "Polido com pérolas de brilho natural",
       warranty: "1 ano + embalagem premium"
+    }
+  },
+  {
+    id: "9",
+    name: "Anel Safira Luxo",
+    price: 2499.90,
+    image: ring3,
+    category: "Anéis",
+    description: "Anel sofisticado com safira azul natural cercada por micro diamantes. Uma peça de rara beleza.",
+    details: {
+      material: "Ouro branco 18k",
+      stone: "Safira natural + micro diamantes",
+      weight: "5.8g",
+      dimensions: "Tamanho ajustável",
+      finish: "Polido com cravação de pedras",
+      warranty: "2 anos + certificado gemológico"
+    }
+  },
+  {
+    id: "10",
+    name: "Colar Gota Esmeralda",
+    price: 1899.90,
+    image: necklace3,
+    category: "Colares",
+    description: "Colar elegante com pingente em formato de gota e esmeralda natural.",
+    details: {
+      material: "Ouro 18k",
+      stone: "Esmeralda natural",
+      weight: "4.5g",
+      dimensions: "50cm ajustável",
+      finish: "Polido brilhante",
+      warranty: "2 anos + certificado"
+    }
+  },
+  {
+    id: "11",
+    name: "Pulseira Tennis Deluxe",
+    price: 3299.90,
+    image: bracelet3,
+    category: "Pulseiras",
+    description: "Pulseira tennis premium com zircônias cravadas em sequência perfeita.",
+    details: {
+      material: "Ouro 18k",
+      stone: "Zircônias Premium (200 pedras)",
+      weight: "12.5g",
+      dimensions: "18cm",
+      finish: "Cravação manual",
+      warranty: "3 anos + fecho de segurança premium"
+    }
+  },
+  {
+    id: "12",
+    name: "Brincos Argola Luxo",
+    price: 1599.90,
+    image: earrings3,
+    category: "Brincos",
+    description: "Brincos argola sofisticados com detalhes em diamantes.",
+    details: {
+      material: "Ouro amarelo 18k",
+      stone: "Diamantes naturais",
+      weight: "3.5g (par)",
+      dimensions: "Diâmetro 25mm",
+      finish: "Polido com cravação",
+      warranty: "2 anos"
     }
   },
 ];
