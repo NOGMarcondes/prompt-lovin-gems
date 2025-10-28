@@ -6,10 +6,7 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import CartSidebar, { CartItem } from "@/components/CartSidebar";
 import ProductCard, { Product } from "@/components/ProductCard";
 import { toast } from "sonner";
-import ring1 from "@/assets/ring-1.jpg";
-import necklace1 from "@/assets/necklace-1.jpg";
-import bracelet1 from "@/assets/bracelet-1.jpg";
-import earrings1 from "@/assets/earrings-1.jpg";
+import { products } from "@/data/products";
 
 const CategoryPage = () => {
   const { category } = useParams();
@@ -23,67 +20,8 @@ const CategoryPage = () => {
     brincos: "Brincos",
   };
 
-  const allProducts: Product[] = [
-    {
-      id: "1",
-      name: "Anel Ametista Royal",
-      price: 899.90,
-      image: ring1,
-      category: "Anéis",
-    },
-    {
-      id: "5",
-      name: "Anel Solitário Clássico",
-      price: 1499.90,
-      image: ring1,
-      category: "Anéis",
-    },
-    {
-      id: "2",
-      name: "Colar Delicado Gold",
-      price: 749.90,
-      image: necklace1,
-      category: "Colares",
-    },
-    {
-      id: "6",
-      name: "Colar Pérola Premium",
-      price: 2199.90,
-      image: necklace1,
-      category: "Colares",
-    },
-    {
-      id: "3",
-      name: "Pulseira Elegance",
-      price: 649.90,
-      image: bracelet1,
-      category: "Pulseiras",
-    },
-    {
-      id: "7",
-      name: "Pulseira Riviera",
-      price: 1899.90,
-      image: bracelet1,
-      category: "Pulseiras",
-    },
-    {
-      id: "4",
-      name: "Brincos Diamante",
-      price: 1299.90,
-      image: earrings1,
-      category: "Brincos",
-    },
-    {
-      id: "8",
-      name: "Brincos Argola Premium",
-      price: 899.90,
-      image: earrings1,
-      category: "Brincos",
-    },
-  ];
-
   const categoryName = categoryNames[category || ""] || "Produtos";
-  const filteredProducts = allProducts.filter(
+  const filteredProducts = products.filter(
     (product) => product.category.toLowerCase() === categoryName.toLowerCase()
   );
 

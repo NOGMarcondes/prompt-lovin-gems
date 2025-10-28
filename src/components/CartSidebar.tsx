@@ -13,11 +13,17 @@ interface CartSidebarProps {
   onClose: () => void;
   items: CartItem[];
   onRemoveItem: (id: string) => void;
-  onCheckout: () => void;
+  onCheckout?: () => void;
 }
 
 const CartSidebar = ({ open, onClose, items, onRemoveItem, onCheckout }: CartSidebarProps) => {
   const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+  const handleCheckout = () => {
+    if (onCheckout) {
+      onCheckout();
+    }
+  };
 
   return (
     <Sheet open={open} onOpenChange={onClose}>
@@ -80,8 +86,8 @@ const CartSidebar = ({ open, onClose, items, onRemoveItem, onCheckout }: CartSid
                     </p>
                   </div>
                 </div>
-                <Button className="w-full" size="lg" onClick={onCheckout}>
-                  Finalizar Compra
+                <Button className="w-full" size="lg" onClick={handleCheckout} asChild>
+                  <a href="/checkout">Finalizar Compra</a>
                 </Button>
               </div>
             </>

@@ -33,16 +33,16 @@ const AboutPage = () => {
 
   const testimonials = [
     {
-      name: "Maria Silva",
-      text: "Comprei meu anel de noivado aqui e foi perfeito! Atendimento impecável e qualidade excepcional.",
+      name: "Cliente Satisfeita",
+      text: "Adorei minha compra! A joia é ainda mais bonita pessoalmente. Qualidade impecável!",
     },
     {
-      name: "Ana Costa",
-      text: "As joias são lindas e delicadas. Sempre recebo elogios quando uso!",
+      name: "Compradora Feliz",
+      text: "Atendimento excelente e produto maravilhoso. Sempre recebo elogios!",
     },
     {
-      name: "Juliana Santos",
-      text: "Entrega rápida, embalagem linda e produto exatamente como nas fotos. Recomendo!",
+      name: "Cliente Fiel",
+      text: "Entrega rápida e embalagem linda. Já é minha terceira compra aqui!",
     },
   ];
 
@@ -69,14 +69,19 @@ const AboutPage = () => {
       <section className="container mx-auto px-4 py-20">
         <div className="max-w-3xl mx-auto space-y-8 text-center">
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Há mais de 15 anos, a <span className="font-semibold text-primary">Joias Elegance</span> vem 
-            encantando clientes com peças exclusivas que unem tradição e modernidade. Nossa missão é 
-            criar joias que não apenas adornam, mas contam histórias e celebram momentos únicos.
+            A <span className="font-semibold text-primary">Joias Elegance</span> é uma joalheria 
+            dedicada a oferecer peças exclusivas e sofisticadas que celebram os momentos mais 
+            especiais da vida. Combinamos design moderno com a tradição da joalheria fina.
           </p>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Cada peça é cuidadosamente selecionada e trabalhada por artesãos experientes, 
-            utilizando apenas materiais nobres como ouro, prata e pedras preciosas certificadas. 
-            Acreditamos que uma joia deve ser tão especial quanto a pessoa que a usa.
+            Trabalhamos com materiais nobres e pedras preciosas selecionadas, garantindo 
+            qualidade e autenticidade em cada peça. Nossa coleção é pensada para mulheres 
+            que valorizam elegância, estilo e exclusividade.
+          </p>
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Seja para presentear alguém especial ou para se presentear, nossas joias são 
+            criadas para serem eternas e inesquecíveis. Cada detalhe é pensado com carinho 
+            para que você tenha uma experiência única de compra.
           </p>
         </div>
       </section>

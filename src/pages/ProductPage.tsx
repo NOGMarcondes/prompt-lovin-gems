@@ -8,40 +8,15 @@ import CartSidebar, { CartItem } from "@/components/CartSidebar";
 import ProductCard, { Product } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import ring1 from "@/assets/ring-1.jpg";
-import necklace1 from "@/assets/necklace-1.jpg";
-import bracelet1 from "@/assets/bracelet-1.jpg";
+import { products } from "@/data/products";
 
 const ProductPage = () => {
   const { id } = useParams();
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Mock product data
-  const product: Product = {
-    id: id || "1",
-    name: "Anel Ametista Royal",
-    price: 899.90,
-    image: ring1,
-    category: "Anéis",
-  };
-
-  const relatedProducts: Product[] = [
-    {
-      id: "2",
-      name: "Colar Delicado Gold",
-      price: 749.90,
-      image: necklace1,
-      category: "Colares",
-    },
-    {
-      id: "3",
-      name: "Pulseira Elegance",
-      price: 649.90,
-      image: bracelet1,
-      category: "Pulseiras",
-    },
-  ];
+  const product = products.find(p => p.id === id) || products[0];
+  const relatedProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
 
   const handleAddToCart = (prod: Product) => {
     setCartItems((prev) => {
@@ -124,15 +99,12 @@ const ProductPage = () => {
             <div className="border-t pt-6 space-y-4">
               <h3 className="font-semibold text-lg">Descrição do Produto</h3>
               <p className="text-muted-foreground">
-                Anel elegante em ouro rosé 18k com ametista natural lapidada. 
-                Design exclusivo que combina sofisticação e modernidade. 
-                Perfeito para ocasiões especiais ou uso diário com elegância.
+                {product.description}
               </p>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Material: Ouro rosé 18k</li>
-                <li>• Pedra: Ametista natural</li>
-                <li>• Garantia: 1 ano</li>
-                <li>• Certificado de autenticidade incluso</li>
+                {product.details.map((detail, index) => (
+                  <li key={index}>• {detail}</li>
+                ))}
               </ul>
             </div>
           </div>

@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import heroImage from "@/assets/hero-jewelry.jpg";
+import { products } from "@/data/products";
 import ring1 from "@/assets/ring-1.jpg";
 import necklace1 from "@/assets/necklace-1.jpg";
 import bracelet1 from "@/assets/bracelet-1.jpg";
@@ -28,36 +29,7 @@ const Index = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const featuredProducts: Product[] = [
-    {
-      id: "1",
-      name: "Anel Ametista Royal",
-      price: 899.90,
-      image: ring1,
-      category: "Anéis",
-    },
-    {
-      id: "2",
-      name: "Colar Delicado Gold",
-      price: 749.90,
-      image: necklace1,
-      category: "Colares",
-    },
-    {
-      id: "3",
-      name: "Pulseira Elegance",
-      price: 649.90,
-      image: bracelet1,
-      category: "Pulseiras",
-    },
-    {
-      id: "4",
-      name: "Brincos Diamante",
-      price: 1299.90,
-      image: earrings1,
-      category: "Brincos",
-    },
-  ];
+  const featuredProducts = products.slice(0, 4);
 
   const categories = [
     { name: "Anéis", icon: Sparkles, image: ring1 },

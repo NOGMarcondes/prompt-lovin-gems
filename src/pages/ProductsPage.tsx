@@ -5,59 +5,11 @@ import WhatsAppButton from "@/components/WhatsAppButton";
 import CartSidebar, { CartItem } from "@/components/CartSidebar";
 import ProductCard, { Product } from "@/components/ProductCard";
 import { toast } from "sonner";
-import ring1 from "@/assets/ring-1.jpg";
-import necklace1 from "@/assets/necklace-1.jpg";
-import bracelet1 from "@/assets/bracelet-1.jpg";
-import earrings1 from "@/assets/earrings-1.jpg";
+import { products } from "@/data/products";
 
 const ProductsPage = () => {
   const [cartOpen, setCartOpen] = useState(false);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
-
-  const allProducts: Product[] = [
-    {
-      id: "1",
-      name: "Anel Ametista Royal",
-      price: 899.90,
-      image: ring1,
-      category: "Anéis",
-    },
-    {
-      id: "2",
-      name: "Colar Delicado Gold",
-      price: 749.90,
-      image: necklace1,
-      category: "Colares",
-    },
-    {
-      id: "3",
-      name: "Pulseira Elegance",
-      price: 649.90,
-      image: bracelet1,
-      category: "Pulseiras",
-    },
-    {
-      id: "4",
-      name: "Brincos Diamante",
-      price: 1299.90,
-      image: earrings1,
-      category: "Brincos",
-    },
-    {
-      id: "5",
-      name: "Anel Solitário Clássico",
-      price: 1499.90,
-      image: ring1,
-      category: "Anéis",
-    },
-    {
-      id: "6",
-      name: "Colar Pérola Premium",
-      price: 2199.90,
-      image: necklace1,
-      category: "Colares",
-    },
-  ];
 
   const handleAddToCart = (product: Product) => {
     setCartItems((prev) => {
@@ -98,7 +50,7 @@ const ProductsPage = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {allProducts.map((product) => (
+          {products.map((product) => (
             <ProductCard
               key={product.id}
               product={product}
