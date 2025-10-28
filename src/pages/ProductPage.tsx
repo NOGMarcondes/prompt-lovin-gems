@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ShoppingCart, Heart } from "lucide-react";
+import { ArrowLeft, ShoppingCart, Heart, Package, Ruler, Gem, Shield, Truck } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CartSidebar, { CartItem } from "@/components/CartSidebar";
 import ProductCard, { Product } from "@/components/ProductCard";
 import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
 import { products } from "@/data/products";
 
@@ -96,16 +98,112 @@ const ProductPage = () => {
               </Button>
             </div>
 
-            <div className="border-t pt-6 space-y-4">
-              <h3 className="font-semibold text-lg">Descrição do Produto</h3>
-              <p className="text-muted-foreground">
-                {product.description}
-              </p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                {product.details.map((detail, index) => (
-                  <li key={index}>• {detail}</li>
-                ))}
-              </ul>
+            <div className="border-t pt-6">
+              <Tabs defaultValue="description" className="w-full">
+                <TabsList className="grid w-full grid-cols-3">
+                  <TabsTrigger value="description">Descrição</TabsTrigger>
+                  <TabsTrigger value="specifications">Especificações</TabsTrigger>
+                  <TabsTrigger value="shipping">Entrega</TabsTrigger>
+                </TabsList>
+                
+                <TabsContent value="description" className="space-y-4 mt-4">
+                  <h3 className="font-semibold text-lg">Sobre o Produto</h3>
+                  <p className="text-muted-foreground leading-relaxed">
+                    {product.description}
+                  </p>
+                </TabsContent>
+                
+                <TabsContent value="specifications" className="space-y-6 mt-4">
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                      <Package className="h-5 w-5" />
+                      Detalhes Técnicos
+                    </h3>
+                    <div className="space-y-3 text-sm">
+                      {product.details.material && (
+                        <div className="flex justify-between py-2 border-b">
+                          <span className="text-muted-foreground font-medium">Material:</span>
+                          <span className="font-semibold">{product.details.material}</span>
+                        </div>
+                      )}
+                      {product.details.stone && (
+                        <div className="flex justify-between py-2 border-b">
+                          <span className="text-muted-foreground font-medium flex items-center gap-2">
+                            <Gem className="h-4 w-4" />
+                            Pedra/Detalhe:
+                          </span>
+                          <span className="font-semibold">{product.details.stone}</span>
+                        </div>
+                      )}
+                      {product.details.weight && (
+                        <div className="flex justify-between py-2 border-b">
+                          <span className="text-muted-foreground font-medium">Peso:</span>
+                          <span className="font-semibold">{product.details.weight}</span>
+                        </div>
+                      )}
+                      {product.details.dimensions && (
+                        <div className="flex justify-between py-2 border-b">
+                          <span className="text-muted-foreground font-medium flex items-center gap-2">
+                            <Ruler className="h-4 w-4" />
+                            Dimensões:
+                          </span>
+                          <span className="font-semibold">{product.details.dimensions}</span>
+                        </div>
+                      )}
+                      {product.details.finish && (
+                        <div className="flex justify-between py-2 border-b">
+                          <span className="text-muted-foreground font-medium">Acabamento:</span>
+                          <span className="font-semibold">{product.details.finish}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <Separator />
+
+                  <div>
+                    <h3 className="font-semibold text-lg mb-4 flex items-center gap-2">
+                      <Shield className="h-5 w-5" />
+                      Garantia e Certificação
+                    </h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {product.details.warranty || "Garantia de 1 ano contra defeitos de fabricação"}
+                    </p>
+                  </div>
+                </TabsContent>
+                
+                <TabsContent value="shipping" className="space-y-4 mt-4">
+                  <div className="flex items-start gap-3">
+                    <Truck className="h-5 w-5 text-primary mt-1" />
+                    <div>
+                      <h3 className="font-semibold mb-2">Frete Grátis</h3>
+                      <p className="text-sm text-muted-foreground">
+                        Para compras acima de R$ 500,00 em todo o Brasil
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <Separator />
+                  
+                  <div>
+                    <h3 className="font-semibold mb-2">Prazo de Entrega</h3>
+                    <ul className="text-sm text-muted-foreground space-y-2">
+                      <li>• Capitais: 3-5 dias úteis</li>
+                      <li>• Interior: 5-10 dias úteis</li>
+                      <li>• Regiões remotas: até 15 dias úteis</li>
+                    </ul>
+                  </div>
+                  
+                  <Separator />
+                  
+                  <div>
+                    <h3 className="font-semibold mb-2">Política de Troca</h3>
+                    <p className="text-sm text-muted-foreground">
+                      Você tem até 7 dias para trocar seu produto, conforme o Código de Defesa do Consumidor.
+                    </p>
+                  </div>
+                </TabsContent>
+              </Tabs>
             </div>
           </div>
         </div>
