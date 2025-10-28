@@ -69,7 +69,7 @@ const Index = () => {
       />
 
       {/* Hero Section - Compacto */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[300px] sm:h-[400px] lg:h-[500px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src={heroImage}
@@ -79,24 +79,24 @@ const Index = () => {
           <div className="absolute inset-0 gradient-hero opacity-60" />
         </div>
         <div className="relative z-10 text-center text-white px-4 animate-fade-in">
-          <h1 className="text-4xl md:text-6xl font-serif font-bold mb-4">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold mb-3 sm:mb-4">
             Elegância que Brilha
           </h1>
-          <p className="text-lg md:text-xl mb-6 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg md:text-xl mb-4 sm:mb-6 max-w-2xl mx-auto">
             Descubra joias exclusivas que contam sua história
           </p>
         </div>
       </section>
 
       {/* Categories Grid */}
-      <section className="container mx-auto px-4 py-20">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl font-serif font-bold mb-4">Nossas Categorias</h2>
-          <p className="text-muted-foreground text-lg">
+      <section className="container mx-auto px-4 py-12 sm:py-16 lg:py-20">
+        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold mb-3 sm:mb-4">Nossas Categorias</h2>
+          <p className="text-muted-foreground text-sm sm:text-base lg:text-lg">
             Encontre a peça perfeita para cada momento
           </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
           {categories.map((category, index) => {
             const Icon = category.icon;
             const categoryPath = `/categoria/${category.name.toLowerCase()}`;
@@ -112,9 +112,9 @@ const Index = () => {
                   alt={category.name}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col items-center justify-end p-6">
-                  <Icon className="h-8 w-8 text-white mb-2" />
-                  <h3 className="text-white font-serif text-xl font-bold">
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/80 to-transparent flex flex-col items-center justify-end p-3 sm:p-4 lg:p-6">
+                  <Icon className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8 text-white mb-1 sm:mb-2" />
+                  <h3 className="text-white font-serif text-base sm:text-lg lg:text-xl font-bold">
                     {category.name}
                   </h3>
                 </div>
@@ -125,14 +125,14 @@ const Index = () => {
       </section>
 
       {/* Featured Products */}
-      <section className="container mx-auto px-4 py-20 bg-secondary/20">
-        <div className="text-center mb-12 animate-fade-in">
-          <h2 className="text-4xl font-serif font-bold mb-4">Mais Vendidos</h2>
-          <p className="text-muted-foreground text-lg">
+      <section className="container mx-auto px-4 py-12 sm:py-16 lg:py-20 bg-secondary/20">
+        <div className="text-center mb-8 sm:mb-12 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold mb-3 sm:mb-4">Mais Vendidos</h2>
+          <p className="text-muted-foreground text-sm sm:text-base lg:text-lg">
             As joias preferidas das nossas clientes
           </p>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
           {featuredProducts.map((product) => (
             <ProductCard
               key={product.id}
@@ -144,15 +144,15 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="gradient-hero text-white py-20">
+      <section className="gradient-hero text-white py-12 sm:py-16 lg:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl font-serif font-bold mb-6 animate-fade-in">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold mb-4 sm:mb-6 animate-fade-in">
             Coleção Premium
           </h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto animate-fade-in">
+          <p className="text-base sm:text-lg lg:text-xl mb-6 sm:mb-8 max-w-2xl mx-auto animate-fade-in">
             Peças exclusivas em ouro e pedras preciosas para ocasiões especiais
           </p>
-          <Button size="lg" variant="secondary" className="animate-scale-in" asChild>
+          <Button size="lg" variant="secondary" className="animate-scale-in h-10 sm:h-11 text-sm sm:text-base" asChild>
             <Link to="/produtos">Explorar Premium</Link>
           </Button>
         </div>

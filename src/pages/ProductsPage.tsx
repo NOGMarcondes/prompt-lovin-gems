@@ -41,15 +41,15 @@ const ProductsPage = () => {
         cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
       />
 
-      <section className="container mx-auto px-4 py-12">
-        <div className="text-center mb-12">
-          <h1 className="text-5xl font-serif font-bold mb-4">Nossa Coleção</h1>
-          <p className="text-xl text-muted-foreground">
+      <section className="container mx-auto px-4 py-8 sm:py-12">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold mb-3 sm:mb-4">Nossa Coleção</h1>
+          <p className="text-base sm:text-lg lg:text-xl text-muted-foreground">
             Descubra peças únicas criadas especialmente para você
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
           {products.map((product) => (
             <ProductCard
               key={product.id}

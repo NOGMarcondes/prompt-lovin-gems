@@ -50,13 +50,13 @@ const ProductPage = () => {
         cartItemsCount={cartItems.reduce((sum, item) => sum + item.quantity, 0)}
       />
 
-      <div className="container mx-auto px-4 py-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-muted-foreground hover:text-primary mb-8">
+      <div className="container mx-auto px-4 py-6 sm:py-8">
+        <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 sm:mb-8">
           <ArrowLeft className="h-4 w-4" />
           Voltar para Home
         </Link>
 
-        <div className="grid md:grid-cols-2 gap-12 mb-20">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 mb-12 sm:mb-16 lg:mb-20">
           {/* Product Images */}
           <div className="space-y-4">
             <div className="relative aspect-square overflow-hidden rounded-lg group">
@@ -69,31 +69,31 @@ const ProductPage = () => {
           </div>
 
           {/* Product Info */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             <div>
-              <p className="text-sm text-muted-foreground mb-2">{product.category}</p>
-              <h1 className="text-4xl font-serif font-bold mb-4">{product.name}</h1>
-              <div className="flex items-baseline gap-3 mb-6">
-                <p className="text-4xl font-bold text-primary">
+              <p className="text-xs sm:text-sm text-muted-foreground mb-2">{product.category}</p>
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold mb-3 sm:mb-4">{product.name}</h1>
+              <div className="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-3 mb-4 sm:mb-6">
+                <p className="text-3xl sm:text-4xl font-bold text-primary">
                   R$ {product.price.toFixed(2)}
                 </p>
-                <p className="text-sm text-muted-foreground">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   ou 6x de R$ {(product.price / 6).toFixed(2)} sem juros
                 </p>
               </div>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <Button
                 size="lg"
-                className="w-full"
+                className="w-full h-11 sm:h-12"
                 onClick={() => handleAddToCart(product)}
               >
-                <ShoppingCart className="mr-2 h-5 w-5" />
+                <ShoppingCart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Adicionar ao Carrinho
               </Button>
-              <Button size="lg" variant="outline" className="w-full">
-                <Heart className="mr-2 h-5 w-5" />
+              <Button size="lg" variant="outline" className="w-full h-11 sm:h-12">
+                <Heart className="mr-2 h-4 w-4 sm:h-5 sm:w-5" />
                 Adicionar aos Favoritos
               </Button>
             </div>
@@ -209,11 +209,11 @@ const ProductPage = () => {
         </div>
 
         {/* Related Products */}
-        <section className="py-12 border-t">
-          <h2 className="text-3xl font-serif font-bold mb-8 text-center">
+        <section className="py-8 sm:py-12 border-t">
+          <h2 className="text-2xl sm:text-3xl font-serif font-bold mb-6 sm:mb-8 text-center">
             Você Também Pode Gostar
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {relatedProducts.map((prod) => (
               <ProductCard
                 key={prod.id}
